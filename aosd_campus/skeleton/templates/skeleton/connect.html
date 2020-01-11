@@ -1,0 +1,177 @@
+{% extends 'skeleton/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+
+<style media="screen">
+
+  body{
+    background-image: url("{% static 'graphics/group.jpg' %}");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .bt-logo{
+    max-width: 250px;
+    height: 150px;
+  }
+
+  .midweek{
+    background-image: url("{% static 'graphics/evanpreach-wide-c.jpg' %}");
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .friday{
+    background-image: url("{% static 'graphics/paintwar-shift.jpg' %}");
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+</style>
+
+<div style="text-align:center; padding-top: 15%">
+  <h1 class="header-text">GET INVOLVED</h1>
+</div>
+
+<div class="jumbotron page-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5" style="border-right: 1px solid black; text-align: right">
+        <h1>VISIT OUR <br> SMALL GROUPS</h1>
+      </div>
+      <div class="col">
+        <p>Our discussion groups are a great place to connect with other students
+          and learn more about what the Bible has to say about our lives.
+          They're often held on campus, are non-committal, and are open to anyone
+          from any background and any walk of life. Come through for fun, engaging discussions, and valuable connections.</p>
+        <h3><b>Find a small group at your school below!</b></h3>
+      </div>
+    </div>
+
+    <!-- Display Schools -->
+    <div class="row" style="padding-top:5%;">
+
+      {% for bt in bt_list %}
+        <div class="col">
+
+          <!-- Modal BTN for School Info -->
+          <button type="button" class="bg-transparent" data-toggle="modal" data-target="#{{bt.shorthand}}"
+          style="border:none">
+            <img class="bt-logo" src="{{bt.logo}}" alt="logo">
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="{{bt.shorthand}}" tabindex="-1" role="dialog" aria-labelledby="{{bt.shorthand}}Title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="{{bt.shorthand}}Title">{{bt.school}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  {{bt.info}}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Bible Study -->
+    <div style="margin-top:10%; margin-bottom: 30px;">
+      <h1>JOIN A BIBLE STUDY</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <p>Whether you're curious about Christianity or searching for answers
+        to real doubts, we believe that studying the Bible with others
+        in a personal setting is one of the most effective ways to grow in your faith.</p>
+        <p>Our Bible studies are engaging, personalized, and flexible with wherever
+        you're at. We believe that conversations, more than information, changes lives.
+        We welcome all questions, all people, and all backgrounds to our Bible studies--
+
+        <p>So if you want to share a cup of coffee with us or meet on your college campus
+        to chat, feel free to leave your contact information here and we will
+        get back to you as soon as we can. We look forward to connecting with you!</p>
+
+      </div>
+      <div class="col" style="border-left: 1px solid black; padding-left:auto;">
+        <p>Let's talk: reach out to us below!</p>
+        <form method="POST" onsubmit="alert('Thank you for connecting! We will get back to you shortly.');">
+          {% csrf_token %}
+          {{bstudy_form|crispy}}
+          <div style="margin-top: 30px">
+            <input type="submit" class='btn btn-warning btn-lg' value="Connect">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midweek">
+  <div class="container" style="color:white;">
+    <!-- Worship -->
+    <div class="row" style="margin-top: 10%; margin-bottom: 10%;">
+      <div class="col">
+      </div>
+      <div class="col-lg-6" style="margin:auto;">
+        <h1>WORSHIP SERVICES</h1>
+        <hr>
+        <p>Looking for a place to deepen or explore a relationship with God? Searching for
+          meaningful, spiritual friendships?</p>
+        <p>Come join us at our worship services!
+          Be expecting vibrant communities, awesome connections,
+          and powerful messages from our ministers--all are welcome here. </p>
+        <div class="row">
+          <div class="col">
+            <p class="text-center"><b>MIDWEEKS</b></p>
+            <p><b>When:</b> Tuesdays at 7:30 PM<br>
+            <b>Where:</b> San Diego Performing Arts Center
+            <br><b>Address:</b> 4579 Mission Gorge Pl, San Diego, CA 92120</p>
+          </div>
+          <div class="col">
+            <p class="text-center"><b>SUNDAYS</b></p>
+            <p><b>When:</b> Sundays at 10 AM<br>
+            <b>Where:</b> Patrick Henry High School
+            <br><b>Address:</b> 6702 Wandermere Dr, San Diego, CA 92120</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Friday -->
+<div class="friday">
+  <div class="container" style="padding-top:5%; padding-bottom:5%; color:white">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="header-text">FRIDAY FUN</h1>
+        <p>We understand: school is stressful.</p>
+        <p>Luckily we're here to help! Whether it's to relax and connect, or loosen up and get active,
+          our Friday events are meant to help build community with a big kick of fun!
+          Activities vary every week, but our past Fridays have seen sports hangouts, paint wars,
+          outdoor movies, dodgeball, iceblocking, and so much more--</p>
+        <p>So come through for a great time!</p>
+        <p>You can find out more about our Fridays on this websites' events page, or any of our social media
+        pages.</p>
+      </div>
+      <div class="col"></div>
+    </div>
+    <button type="button" class="btn btn-warning">UPCOMING EVENTS</button>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'skeleton/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- Carousel Sliding Source https://codepen.io/Rowno/pen/Afykb -->
+
+<style>
+  .carousel-fade {
+      .carousel-inner {
+          .item {
+              transition-property: opacity;
+          }
+
+          .carousel-item, .active.left, .active.right {
+              opacity: 0;
+          }
+
+          .active, .next.left, .prev.right {
+              opacity: 1;
+          }
+
+          .next, .prev, .active.left, .active.right {
+              left: 0;
+              transform: translate3d(0, 0, 0);
+          }
+      }
+
+      .carousel-control {
+          z-index: 2;
+      }
+  }
+
+  .carousel, .carousel-inner, .carousel-inner .carousel-item {
+      height: 100%;
+  }
+
+  .carimg{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: -8%;
+    filter: brightness(40%);
+  }
+
+  /* Styling for We Are Statement */
+
+  .weare-img{
+    height: 90%;
+    border-radius: 50%;
+  }
+
+  #weare_jumbo{
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Styling for Connection Form */
+
+  #connect_jumbo{
+    background-image: url("{% static 'graphics/midweek-centered.jpg' %}");
+    background-size: cover;
+    margin-bottom: 0px;
+  }
+
+  .connect-cont{
+    color: white;
+    background-color: rgba(50, 50, 50, 0.90);
+    padding: 30px;
+    max-width: 60%;
+  }
+
+  #connect_form_div{
+    margin-bottom: 10px;
+  }
+
+  input, input[type=text], textarea{
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px solid white;
+    overflow: hidden;
+  }
+
+</style>
+
+<!-- Cover Logo -->
+<div class="text-center"; style="position:absolute; z-index:100; height: 100%; width:100%">
+  <img id="cover_logo" src = "{% static 'graphics/ao-frontlogo.png' %}" alt="LOGO"
+  style="max-width:50%; max-height:50%; margin-top:10%;">
+</div>
+
+<!-- Carousel -->
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+    <li data-target="#carousel" data-slide-to="3"></li>
+    <li data-target="#carousel" data-slide-to="4"></li>
+    <li data-target="#carousel" data-slide-to="5"></li>
+    <li data-target="#carousel" data-slide-to="6"></li>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="carousel-item active" alt = "1st slide"><img class = "carimg" src="{% static 'graphics/bowling.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/aogirls.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "3rd slide"> <img class = "carimg" src="{% static 'graphics/candid.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/beach.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "3rd slide"> <img class = "carimg" src="{% static 'graphics/broomball.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/abyjack-wide.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/camping.jpg' %}" alt="img"> </div>
+  </div>
+</div>
+
+<!-- Who We Are -->
+<div class="container text-center" style="padding-top: 5%; padding-bottom: 30px;">
+  <div class="row">
+    <div class="col text-center">
+      <img class = "weare-img" src="{% static 'graphics/old.jpg' %}" alt="">
+    </div>
+    <div class="col">
+      <div style="background-color: rgba(255, 255, 255, 0.7)" class="jumbotron">
+          <h1><b>ABOUT US</b></h1>
+          <hr>
+          <h2><b>Welcome to Alpha Omega </b></h2>
+          <p>We are one campus ministry operating as four sub-ministries, to best reach the colleges throughout all of San Diego.
+            <i>Our goal is to support students from all walks of life to best connect with Jesus.</i>
+            As imperfect people we aim to use scriptures and prayer to direct us on how we should live.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Let's Connect -->
+<div class="jumbotron" id="connect_jumbo">
+  <div class = "container connect-cont">
+    <div class="row">
+      <div class="col">
+        <h1>Let's Connect</h1>
+        <p class="text-right"style='font-family: cambria;'><i>"The best time to plant a tree was 20 years ago.
+          <br> The second best time is now."</i> </p>
+        <p>Want to connect about your past, present or future walk with God but don't know where to begin? We're here to help: just let us know below!</p>
+      </div>
+      <div class="col text-center">
+        <!-- Signup Form -->
+        <form method="POST" onsubmit="alert('Thank you for connecting! We will get back to you shortly.');">
+          {% csrf_token %}
+          {% for field in connection_form %}
+          <div id="connect_form_div">
+              {{ field.errors }}
+              {{ field.label_tag }} <br>
+              {{ field }}<br>
+          </div>
+          {% endfor %}
+          <div class="text-center" style="margin-top: 30px">
+            <input type="submit" class='btn btn-warning btn-lg' value="Connect">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Carousel Script -->
+<script type = "text/javascript">
+  $('.carousel').carousel({
+    interval: 6000
+  })
+</script>
+
+{% endblock %}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <script src="https://kit.fontawesome.com/6f2d3b1a48.js" crossorigin="anonymous"></script> -->
+
+    <!-- Script CDNs -->
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Title -->
+    <title>Alpha Omega San Diego</title>
+
+  </head>
+  <body>
+
+    <!-- Styling for Navbar -->
+    <style>
+
+      body{
+        background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      p{
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2em;
+      }
+
+      h1{
+        font-family: 'Oswald', sans-serif;
+        font-size: 4em;
+      }
+
+      html{
+        scroll-behavior: smooth;
+      }
+
+      #brand{
+        height: 30%;
+        width: 30%;
+      }
+
+      /* Navbar Header Colors */
+      .nav-link {
+        color: white !important;
+      }
+      .nav-link:hover {
+        color: lightgrey !important;
+      }
+
+      /* Navbar Fade on Scroll */
+      .navbar {
+        -webkit-transition: background-color 0.3s ease-in-out;
+        -moz-transition: background-color 0.3s ease-in-out;
+        -ms-transition: background-color 0.3s ease-in-out;
+        -o-transition: background-color 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      /* Social Media Icons */
+      .sm-icon{
+        color: white;
+        font-size: 1.5em;
+        margin-left: 1em;
+        margin-top: 0.4em;
+      }
+
+      /* Footer Styling */
+      .footer{
+        background-color: rgba(63, 81, 95, 1);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: white;
+      }
+
+      .foot-col{
+        margin-left: 10%;
+      }
+
+      .foot-icon{
+        color: white;
+        margin: 10px;
+      }
+
+      hr{
+        border: 1px solid
+      }
+
+      /* For use in other templates */
+      .header-text{
+        font-size:5em;
+        color: white;
+        opacity: 85%;
+        text-shadow: 2px 2px 4px #000000;
+      }
+
+      .page-bg{
+        background: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0px;
+        border-radius: 0;
+      }
+
+    </style>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent", id="navvie", style="background-color: rgba(63, 81, 95, 1);"
+     id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" onclick="scrollToTop()"> <img id="brand" src="{% static 'graphics/aoheaderlogo.png' %}" alt="logo"> </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'skeleton:front' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'skeleton:about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'skeleton:connect' %}">Connect</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'skeleton:gallery' %}">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="fa fa-facebook sm-icon" href="https://www.facebook.com/AOSDCampus/" target="_blank"></a>
+            </li>
+            <li class="nav-item">
+              <a class="fa fa-instagram sm-icon" href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Footer -->
+    <footer class="footer color-white">
+      <div class="container">
+        <div class="row" style="font-size: 13px">
+          <div class="col foot-col">
+            <img src="{% static 'graphics/aologo.png'%}" alt="ALPHA OMEGA" style="width:170px; height:170px">
+          </div>
+          <div class="col">
+            <h4><b>JOIN US</b></h4>
+            <p><span style="color:gold">Midweek</span>: Every Tuesday at 7:30 PM.<br>4579 Mission Gorge Pl, San Diego, CA 92120</p>
+            <p><span style="color:gold">Sundays</span>: Morning service at 10 AM.<br>6702 Wandermere Dr, San Diego, CA 92120</p>
+          </div>
+          <div class="col">
+            <h4><b>CONTACT US</b></h4>
+            <a href="https://www.facebook.com/AOSDCampus/" target="_blank" class="fa fa-facebook fa-2x foot-icon"></a>
+            <a href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank" class="fa fa-instagram fa-2x foot-icon" ></a>
+            <a href="mailto:grimes.evan@gmail.com" class="fa fa-envelope-o fa-2x foot-icon"></a>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border: 1px solid white">
+      <div style="text-align:center">
+        <span class="copyright">Copyright &copy; 2020</span>
+      </div>
+    </footer>
+
+    <!-- Script for scrolling to top on logo click -->
+    <script src="{% static 'js/base.js' %}" type="text/javascript"></script>
+
+  </body>
+</html>
