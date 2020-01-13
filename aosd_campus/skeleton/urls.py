@@ -11,4 +11,5 @@ urlpatterns = [
     path('base/', views.BaseView.as_view(), name = 'base'),
     path('connect/', views.ConnectView.as_view(), name = 'connect'),
     path('gallery/', views.GalleryView.as_view(), name = 'gallery'),
+    path('events/', views.EventView.as_view(), name = 'events')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

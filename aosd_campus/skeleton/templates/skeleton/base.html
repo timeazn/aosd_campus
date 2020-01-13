@@ -80,6 +80,10 @@
         margin-top: 0.4em;
       }
 
+      .sm-icon:link{
+        text-decoration: none;
+      }
+
       /* Footer Styling */
       .footer{
         background-color: rgba(63, 81, 95, 1);
@@ -115,6 +119,13 @@
         border-radius: 0;
       }
 
+      .bordered-header{
+        color: white;
+        border: 3px solid white;
+        padding: 2px 10px 2px;
+        display: inline-flex;
+      }
+
     </style>
 
     <!-- Navigation Bar -->
@@ -138,7 +149,7 @@
               <a class="nav-link" href="{% url 'skeleton:connect' %}">Connect</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#team">Events</a>
+              <a class="nav-link" href="{% url 'skeleton:events' %}">Events</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'skeleton:gallery' %}">Gallery</a>
@@ -173,7 +184,7 @@
             <h4><b>CONTACT US</b></h4>
             <a href="https://www.facebook.com/AOSDCampus/" target="_blank" class="fa fa-facebook fa-2x foot-icon"></a>
             <a href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank" class="fa fa-instagram fa-2x foot-icon" ></a>
-            <a href="mailto:grimes.evan@gmail.com" class="fa fa-envelope-o fa-2x foot-icon"></a>
+            <a href="mailto:aosdcampus@gmail.com" class="fa fa-envelope-o fa-2x foot-icon"></a>
           </div>
         </div>
       </div>

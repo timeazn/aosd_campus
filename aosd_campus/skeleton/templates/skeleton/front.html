@@ -54,6 +54,24 @@
     background-color: rgba(255, 255, 255, 0.7);
   }
 
+  /* Styling for I'm New */
+  .new-btn {
+    border: 1px solid white;
+    font-size: 1em;
+    margin: auto;
+    color:white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    padding: 10px;
+    display: inline;
+  }
+
+  .new-btn:hover {
+    background-color: rgba(63, 81, 95, 1);
+    text-decoration: none;
+    color: white;
+  }
+
   /* Styling for Connection Form */
 
   #connect_jumbo{
@@ -105,60 +123,108 @@
     <div class="carousel-item active" alt = "1st slide"><img class = "carimg" src="{% static 'graphics/bowling.jpg' %}" alt="img"> </div>
     <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/aogirls.jpg' %}" alt="img"> </div>
     <div class="carousel-item" alt = "3rd slide"> <img class = "carimg" src="{% static 'graphics/candid.jpg' %}" alt="img"> </div>
-    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/beach.jpg' %}" alt="img"> </div>
-    <div class="carousel-item" alt = "3rd slide"> <img class = "carimg" src="{% static 'graphics/broomball.jpg' %}" alt="img"> </div>
-    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/abyjack-wide.jpg' %}" alt="img"> </div>
-    <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/camping.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "4th slide"> <img class = "carimg" src="{% static 'graphics/beach.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "5th slide"> <img class = "carimg" src="{% static 'graphics/football-wide.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "6th slide"> <img class = "carimg" src="{% static 'graphics/abyjack-wide.jpg' %}" alt="img"> </div>
+    <div class="carousel-item" alt = "7th slide"> <img class = "carimg" src="{% static 'graphics/broomball.jpg' %}" alt="img"> </div>
   </div>
 </div>
 
 <!-- Who We Are -->
-<div class="container text-center" style="padding-top: 5%; padding-bottom: 30px;">
-  <div class="row">
-    <div class="col text-center">
-      <img class = "weare-img" src="{% static 'graphics/old.jpg' %}" alt="">
-    </div>
-    <div class="col">
-      <div style="background-color: rgba(255, 255, 255, 0.7)" class="jumbotron">
-          <h1><b>ABOUT US</b></h1>
-          <hr>
-          <h2><b>Welcome to Alpha Omega </b></h2>
-          <p>We are one campus ministry operating as four sub-ministries, to best reach the colleges throughout all of San Diego.
-            <i>Our goal is to support students from all walks of life to best connect with Jesus.</i>
-            As imperfect people we aim to use scriptures and prayer to direct us on how we should live.</p>
+<div style="background-color: rgba(255, 255, 255, 0.8)">
+  <div class="container text-center" style="padding-top: 5%; padding-bottom: 30px;">
+    <div class="row">
+      <div class="col text-center">
+        <img class = "weare-img" src="{% static 'graphics/old.jpg' %}" alt="">
+      </div>
+      <div class="col">
+        <div style="border:1px solid black; background-color: rgba(0, 0, 0, 0); " class="jumbotron">
+            <h1><b>WELCOME TO <span>ALPHA OMEGA</span></b></h1>
+            <hr>
+            <p>We are one campus ministry operating as four sub-ministries, to best reach the colleges throughout all of San Diego.
+              <b>Our goal is to support students from all walks of life to best connect with Jesus.</b>
+              As imperfect people we aim to use scriptures and prayer to direct us on how we should live.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div style="background-color: rgba(132,155,170,1); color:white">
+  <!-- I'm New -->
+  <div class="container" style="padding: 30px 40px 30px;">
+    <h1>"I'm new! I would like to..."</h1>
+    <div class="row" style="margin-top:30px">
+      <a role="button" class="new-btn" href="{% url 'skeleton:events' %}"> COME TO AN EVENT </a>
+      <a role="button" class="new-btn" href="#connect_jumbo"> STUDY THE BIBLE </a>
+      <a role="button" class="new-btn" href="{% url 'skeleton:connect'%}"> GET INVOLVED </a>
+      <a role="button" class="new-btn" href="{% url 'skeleton:about' %}"> LEARN MORE ABOUT AO </a>
+      <a role="button" class="new-btn" href="#connect_jumbo"> ASK A QUESTION </a>
+    </div>
+  </div>
+</div>
 
-<!-- Let's Connect -->
-<div class="jumbotron" id="connect_jumbo">
-  <div class = "container connect-cont">
-    <div class="row">
-      <div class="col">
-        <h1>Let's Connect</h1>
-        <p class="text-right"style='font-family: cambria;'><i>"The best time to plant a tree was 20 years ago.
-          <br> The second best time is now."</i> </p>
-        <p>Want to connect about your past, present or future walk with God but don't know where to begin? We're here to help: just let us know below!</p>
-      </div>
-      <div class="col text-center">
-        <!-- Signup Form -->
-        <form method="POST" onsubmit="alert('Thank you for connecting! We will get back to you shortly.');">
-          {% csrf_token %}
-          {% for field in connection_form %}
-          <div id="connect_form_div">
-              {{ field.errors }}
-              {{ field.label_tag }} <br>
-              {{ field }}<br>
-          </div>
-          {% endfor %}
-          <div class="text-center" style="margin-top: 30px">
-            <input type="submit" class='btn btn-warning btn-lg' value="Connect">
-          </div>
-        </form>
+
+
+<!-- Upcoming -->
+<div class="container text-center" style="margin-top:30px; margin-bottom: 30px">
+  <h1 class='bordered-header' style="margin-bottom:20px">UP & COMING</h1>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <h5 class="card-header">Friday Event</h5>
+        <div class="card-body">
+          <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/39034c7705375869ba2337a4584be487.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+        </div>
       </div>
     </div>
+    <div class="col-lg-4">
+
+      <div class="card">
+        <h5 class="card-header">AO Interregional</h5>
+        <div class="card-body">
+          <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/4c463dc6b6d0564ca03fec3a693ae361.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <h5 class="card-header">Services</h5>
+        <div class="card-body">
+          <img src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek"
+          style="overflow:hidden; width:90%;height:auto">
+        </div>
+        <div class="card-footer">
+          <p style="font-size:.8em">Tuesday 730 PM @ SDPAC <br> Sunday 10AM @ Henry High</p>
+          <a role="button" class="btn btn-primary" href="{% url 'skeleton:events' %}"> LEARN MORE </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Connect -->
+<div class="jumbotron" id="connect_jumbo">
+  <div class = "container connect-cont text-center" style="max-width:50%">
+    <h1>Let's Connect</h1>
+    <p class="text-right"style='font-family: cambria;'><i>"The best time to plant a tree was 20 years ago.
+      <br> The second best time is now."</i> </p>
+    <p>Want to connect about your past, present or future walk with God but don't know where to begin? We're here to help: just let us know below!</p>
+    <!-- Signup Form -->
+    <form method="POST" onsubmit="alert('Thank you for connecting! We will get back to you shortly.');">
+      {% csrf_token %}
+      {% for field in connection_form %}
+      <div id="connect_form_div">
+          {{ field.errors }}
+          {{ field.label_tag }} <br>
+          {{ field }}<br>
+      </div>
+      {% endfor %}
+      <div class="text-center" style="margin-top: 30px">
+        <input type="submit" class='btn btn-warning btn-lg' value="Connect">
+      </div>
+    </form>
   </div>
 </div>
 

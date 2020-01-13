@@ -7,7 +7,7 @@ class ConnectionForm(forms.ModelForm):
         model = ConnectionLink
         fields = ('name','email', 'phone','interest')
         widgets = {
-          'interest': forms.Textarea(attrs={'rows':1}),
+          'interest': forms.Textarea(attrs={'rows':1, 'cols':27}),
 
         }
         labels = {

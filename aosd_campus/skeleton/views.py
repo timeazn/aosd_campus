@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.mail import send_mail, BadHeaderError
+from django.utils import timezone
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -25,6 +27,21 @@ class FrontView(TemplateView):
         if connect_form.is_valid():
             instance = connect_form.save(commit=False)
             instance.save()
+
+            # Sending Mail
+            cf_name = connect_form.cleaned_data['name']
+            cf_phone = connect_form.cleaned_data['phone']
+            cf_email = connect_form.cleaned_data['email']
+            cf_interest = connect_form.cleaned_data['interest']
+            cf_date = timezone.now();
+            subject = "Connection: {} at {}".format(cf_name, cf_date)
+            message = "Connection form submitted from website at {}.\nName: {}\nPhone: {}\nEmail: {}\nInterest: {}\n".format(cf_date, cf_name, cf_phone, cf_email, cf_interest)
+            recipient = "aosdcampus@gmail.com"
+            sender = "aosd.helper@gmail.com"
+            try:
+                send_mail(subject, message, sender, [recipient])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
         return HttpResponseRedirect(reverse('skeleton:front'))
 
 # About Page
@@ -51,7 +68,25 @@ class ConnectView(ListView):
             instance = biblestudy_form.save(commit=False)
             instance.interest = 'Bible Study'
             instance.save()
+
+            # Sending Mail
+            bf_name = biblestudy_form.cleaned_data['name']
+            bf_phone = biblestudy_form.cleaned_data['phone']
+            bf_email = biblestudy_form.cleaned_data['email']
+            bf_date = timezone.now();
+            subject = "Bible Study Connection: {} at {}".format(bf_name, bf_date)
+            message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:".format(bf_date, bf_name, bf_phone, bf_email)
+            recipient = "aosdcampus@gmail.com"
+            sender = "aosd.helper@gmail.com"
+            try:
+                send_mail(subject, message, sender, [recipient])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+
         return HttpResponseRedirect(reverse('skeleton:connect'))
 
 class GalleryView(TemplateView):
     template_name = 'skeleton/gallery.html'
+
+class EventView(TemplateView):
+    template_name = 'skeleton/events.html'
