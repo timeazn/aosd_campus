@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load user_agents %}
 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=2">
 
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -24,119 +27,38 @@
     <title>Alpha Omega San Diego</title>
 
   </head>
+
   <body>
-
-    <!-- Styling for Navbar -->
+    <!-- CSS Styling -->
     <style>
+      h1 {
+        font-family: 'Oswald', sans-serif;
 
-      body{
+        {% if request|is_mobile %}
+          font-size: 3em;
+        {% else %}
+          font-size: 4em;
+        {% endif %}
+      }
+      html, body {
         background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        height: 100%;
+        margin: 0;
       }
-
-      p{
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.2em;
-      }
-
-      h1{
-        font-family: 'Oswald', sans-serif;
-        font-size: 4em;
-      }
-
-      html{
-        scroll-behavior: smooth;
-      }
-
-      #brand{
-        height: 30%;
-        width: 30%;
-      }
-
-      /* Navbar Header Colors */
-      .nav-link {
-        color: white !important;
-      }
-      .nav-link:hover {
-        color: lightgrey !important;
-      }
-
-      /* Navbar Fade on Scroll */
-      .navbar {
-        -webkit-transition: background-color 0.3s ease-in-out;
-        -moz-transition: background-color 0.3s ease-in-out;
-        -ms-transition: background-color 0.3s ease-in-out;
-        -o-transition: background-color 0.3s ease-in-out;
-        transition: background-color 0.3s ease-in-out;
-      }
-
-      /* Social Media Icons */
-      .sm-icon{
-        color: white;
-        font-size: 1.5em;
-        margin-left: 1em;
-        margin-top: 0.4em;
-      }
-
-      .sm-icon:link{
-        text-decoration: none;
-      }
-
-      /* Footer Styling */
-      .footer{
-        background-color: rgba(63, 81, 95, 1);
-        padding-top: 20px;
-        padding-bottom: 20px;
-        color: white;
-      }
-
-      .foot-col{
-        margin-left: 10%;
-      }
-
-      .foot-icon{
-        color: white;
-        margin: 10px;
-      }
-
-      hr{
-        border: 1px solid
-      }
-
-      /* For use in other templates */
-      .header-text{
-        font-size:5em;
-        color: white;
-        opacity: 85%;
-        text-shadow: 2px 2px 4px #000000;
-      }
-
-      .page-bg{
-        background: rgba(255, 255, 255, 0.9);
-        margin-bottom: 0px;
-        border-radius: 0;
-      }
-
-      .bordered-header{
-        color: white;
-        border: 3px solid white;
-        padding: 2px 10px 2px;
-        display: inline-flex;
-      }
-
     </style>
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent", id="navvie", style="background-color: rgba(63, 81, 95, 1);"
-     id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent", id="navvie">
       <div class="container">
-        <a class="navbar-brand" onclick="scrollToTop()"> <img id="brand" src="{% static 'graphics/aoheaderlogo.png' %}" alt="logo"> </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
+          <i class="fa fa-bars"></i>
         </button>
+        <a class="navbar-brand brand" onclick="scrollToTop()"> <img class = "img-fluid" src="{% static 'graphics/aoheaderlogo.png' %}" alt="logo"> </a>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
@@ -156,9 +78,9 @@
             </li>
             <li class="nav-item">
               <a class="fa fa-facebook sm-icon" href="https://www.facebook.com/AOSDCampus/" target="_blank"></a>
+              <a class="fa fa-instagram sm-icon" href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank"></a>
             </li>
             <li class="nav-item">
-              <a class="fa fa-instagram sm-icon" href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank"></a>
             </li>
           </ul>
         </div>
@@ -171,13 +93,15 @@
     <!-- Footer -->
     <footer class="footer color-white">
       <div class="container">
-        <div class="row" style="font-size: 13px">
+        <div class="row">
           <div class="col foot-col">
-            <img src="{% static 'graphics/aologo.png'%}" alt="ALPHA OMEGA" style="width:170px; height:170px">
+            <img src="{% static 'graphics/aologo.png'%}" alt="ALPHA OMEGA">
           </div>
           <div class="col">
             <h4><b>JOIN US</b></h4>
             <p><span style="color:gold">Midweek</span>: Every Tuesday at 7:30 PM.<br>4579 Mission Gorge Pl, San Diego, CA 92120</p>
+          </div>
+          <div class="col">
             <p><span style="color:gold">Sundays</span>: Morning service at 10 AM.<br>6702 Wandermere Dr, San Diego, CA 92120</p>
           </div>
           <div class="col">
@@ -189,9 +113,9 @@
         </div>
       </div>
 
-      <hr style="border: 1px solid white">
-      <div style="text-align:center">
-        <span class="copyright">Copyright &copy; 2020</span>
+      <hr>
+      <div class="text-center">
+        <span class="copyright">DesByTT. Copyright &copy; 2020</span>
       </div>
     </footer>
 

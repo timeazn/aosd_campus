@@ -1,0 +1,25 @@
+.sg-col{
+  border-right: 1px solid black;
+  text-align: right
+}
+
+.bstudy{
+  margin-top:80px;
+  margin-bottom: 30px;
+}
+
+.reach-out{
+  border-left: 1px solid black;
+  padding-left:auto;
+}
+
+.midweek .row{
+  margin-top: 10%;
+  margin-bottom: 10%;"
+}
+
+.friday .container{
+  padding-top:5%;
+  padding-bottom:5%;
+  color:white
+}

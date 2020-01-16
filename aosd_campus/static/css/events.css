@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+
+.card{
+  margin-top: 50px;
+}
+
+.mdwk{
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  background-image: url('{% static 'graphics/northmidweek-wide-blue.jpg' %}');
+  background-size: cover;
+}
+
+.sunday{
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  background-image: url('{% static 'graphics/sunday-blue.jpg' %}');
+  background-size: cover;
+}
+
+.calendar{
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 30px
+}

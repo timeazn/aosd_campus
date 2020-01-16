@@ -1,31 +1,38 @@
 {% extends 'skeleton/base.html'%}
 {% load staticfiles %}
+{% load user_agents %}
 
 {% block content %}
+
+  <!-- CSS -->
   <style media="screen">
     body{
       background-image: url("{% static 'graphics/camping.jpg' %}");
       background-size: cover;
+      background-position: center center;
       background-attachment: fixed;
     }
   </style>
+  <link rel="stylesheet" href="{% static 'css/events.css '%}">
 
-  <div class="text-center" style="padding-top: 15%; margin-bottom:40px">
-    <h1 class="header-text" style="font-size: 6em">EVENTS</h1>
-  </div>
+  <h1 class="header-text text-center header-margin">EVENTS</h1>
 
-  <div class="jumbotron" style="margin-bottom:50px; background-color: RGBA(255, 255, 255,0.9); ">
+  <div class="jumbotron page-bg">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 text-right" style="margin:auto;">
-          <h1 style="font-size:7em ">JOIN US <span style="color:gold">FRIDAY</span></h1>
-          <p>Looking for an adventure? So are we.</p>
+        <div class="col-lg-6 text-right" style="margin:auto">
+          {% if request|is_mobile %}
+            <h1>JOIN US <span style="color:gold">FRIDAY</span></h1>
+            <p class="text-center">Looking for an adventure? <br> So are we.</p>
+          {% else %}
+            <h1 style="font-size:7em ">JOIN US <span style="color:gold">FRIDAY</span></h1>
+            <p>Looking for an adventure? So are we.</p>
+          {% endif %}
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <!-- LightWidget WIDGET -->
           <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-          <iframe src="//lightwidget.com/widgets/5eb64763b4a3534cb5fe3b03f248c217.html" scrolling="no" allowtransparency="true" class="lightwidget-widget shadow p-3 mb-5 bg-white rounded"
-          style="width:100%; border: 0; overflow:hidden; "></iframe>
+          <iframe src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="lightwidget-widget shadow p-3 mb-5 bg-white rounded" style="width:100%;border:0;overflow:hidden;"></iframe>
         </div>
       </div>
     </div>
@@ -33,46 +40,36 @@
 
   <div class="container text-center">
     <div class="row">
-      <div class="col-lg-6">
-          <!-- Upcoming Events with LightWidget WIDGET -->
-          <div class="card">
-            <div class="card-header">
-              <h1>UPCOMING</h1>
-            </div>
-            <!-- LightWidget WIDGET -->
-            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js">
-            </script><iframe src="//lightwidget.com/widgets/738b12a3a64e59f9a130ebb30be735c2.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
-          </div>
-      </div>
-
       <!-- Services Info -->
-      <div class="col-lg-6">
-        <div class="card h-50">
+      <div class="col">
+        <div class="card">
           <div class="card-header">
             <h1>MIDWEEK</h1>
           </div>
-          <div class="card-body" style="font-family: 'Oswald', sans-serif; color: white; background-image: url('{% static 'graphics/northmidweek-wide-blue.jpg' %}'); background-size: cover;">
+          <div class="card-body mdwk">
             <h2 style="color:gold">EVERY TUESDAY @ 7:30PM</h2>
             <h2>San Diego Performing Arts Center</h2>
             <h2>4579 Mission Gorge Pl, San Diego, CA 92120</h2>
           </div>
-          <!-- <img src="{% static 'graphics/northmidweek-wide.jpg' %}" alt="midweek" style="width:100%; overflow:hidden"> -->
         </div>
-        <div class="card h-50">
+
+      </div>
+      <div class="col">
+        <div class="card">
           <div class="card-header">
             <h1>SUNDAY SERVICE</h1>
           </div>
-          <div class="card-body" style="font-family: 'Oswald', sans-serif; color: white; background-image: url('{% static 'graphics/sunday-blue.jpg' %}'); background-size: cover">
+          <div class="card-body sunday">
             <h2 style="color:gold">EVERY SUNDAY @ 10AM</h2>
             <h2>Patrick Henry High School</h2>
             <h2>6702 Wandermere Dr, San Diego, CA 92120</h2>
           </div>
-          <!-- <img src="{% static 'graphics/northmidweek-wide.jpg' %}" alt="midweek" style="width:100%; overflow:hidden"> -->
         </div>
       </div>
+
     </div>
 
-    <h1 style="color: rgba(255, 255, 255, 0.9); margin-top: 30px"> Official Calendar</h1>
+    <h1 class = "calendar"> Official Calendar</h1>
     <iframe src="https://calendar.google.com/calendar/b/2/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=YW9zZGNhbXB1c0BnbWFpbC5jb20&amp;src=ZGl2MTByOGlidTdzYWU0ZG5uZzM3ZXMzOWNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=cWVycjc0aXVsdGNpc3A3c3I1MzBoc3ZlamtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dTVscWVuMzU3dWwya3Zqb20xN29yMnRvdWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=a2FvcjhlOWJ1M3RyaXVpZmdhbzZqMmFkaXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=N2VuZjhyN2N0OTF2cGk1djZkaWRubTJ0NDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%2322AA99&amp;color=%23743500&amp;color=%235d00c7&amp;color=%23871111&amp;color=%2370237F&amp;color=%236633CC&amp;mode=AGENDA" style="width:100%; height:500px; margin-bottom:5%;" frameborder="0" ></iframe>
 
   </div>

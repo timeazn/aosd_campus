@@ -1,6 +1,6 @@
 {% extends 'skeleton/base.html' %}
 {% load staticfiles %}
-
+{% load user_agents %}
 {% block content %}
 
 <!-- CSS for About -->
@@ -8,6 +8,7 @@
   #about_front{
     background-image: url("{% static 'graphics/phoenixbt.jpg' %}");
     background-size: cover;
+    background-position: center center;
     position: relative;
     display: block;
     color: white;
@@ -20,7 +21,7 @@
   }
 
   hr{
-    border: 1px solid white;
+    border-color: white;
   }
 
   .about_cover{
@@ -29,13 +30,40 @@
     padding-top: 20px;
   }
 
-  /* Icon Circular Borders */
+  /* Styling for Values */
   .about-icon{
     border: 2px solid white;
-    width: 100px;
-    height: 100px;
+    {% if request|is_mobile %}
+      width: 65x;
+      height: 65px;
+    {% else %}
+      width: 100px;
+      height: 100px;
+    {% endif %}
     border-radius: 50%;
     padding: 15px;
+  }
+
+  .nav-tabs {
+      display: flex;
+  }
+
+  .card {
+      border: none;
+  }
+
+  .card .card-header {
+      display:none;
+  }
+
+  .card .collapse{
+      display:block;
+  }
+
+  .nav-tabs, .card, .active{
+    border: 0 !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    justify-content: center;
   }
 
   /* Styling for Leadership Section */
@@ -65,59 +93,113 @@
 </style>
 
 <!-- We Are -->
-<div class="text-center" style="padding-top: 15%; padding-bottom:20px">
-  <h1 class="bordered-header">WE ARE AO SAN DIEGO</h1>
-</div>
+
+<h1 class="header-text text-center header-margin">WE ARE AOSD</h1>
 
 <div class="jumbotron" style="background-color: rgba(255, 255, 255, 0.85); border-radius: 0; margin-bottom: 0">
   <div class="container">
-    <div class="row">
-      <div class="col" style="border-right: 1px solid black">
-        <h1>We are the San Diego Chapter of a nation-wide campus ministry</h1>
+    {% if request|is_mobile %}
+    <h1>We are the San Diego Chapter of a nation-wide campus ministry</h1>
+    <hr style="border-color:grey">
+    <p>Alpha Omega is a college group of the San Diego Church of Christ.
+      We're comprised of students from colleges all over the county, and we're
+      dedicated to knowing God deeply and making God known on our campuses.</p>
+    <p>Our focus is to apply the Bible to our lives, build deep friendships, deep convictions and have a lot of fun.
+      We strive to know Christ personally, and help others do the same everywhere we go. </p>
+    {% else %}
+      <div class="row">
+        <div class="col" style="border-right: 1px solid black">
+          <h1>We are the San Diego Chapter of a nation-wide campus ministry</h1>
+        </div>
+        <div class="col">
+          <p>Alpha Omega is a college group of the San Diego Church of Christ.
+            We're comprised of students from colleges all over the county, and we're
+            dedicated to knowing God deeply and making God known on our campuses.</p>
+          <p>Our focus is to apply the Bible to our lives, build deep friendships, deep convictions and have a lot of fun.
+            We strive to know Christ personally, and help others do the same everywhere we go. </p>
+        </div>
       </div>
-      <div class="col">
-        <p>Alpha Omega is a college group of the San Diego Church of Christ.
-          We're comprised of students from colleges all over the county, and we're
-          dedicated to knowing God deeply and making God known on our campuses.</p>
-        <p>Our focus is to apply the Bible to our lives, build deep friendships, deep convictions and have a lot of fun.
-          We strive to know Christ personally, and help others do the same everywhere we go. </p>
-      </div>
-    </div>
-
+    {% endif %}
   </div>
 </div>
 
 <!-- Values -->
 <div id="about_front" class="jumbotron text-center">
   <div class="container about_cover">
-    <table>
-      <h1 class="bordered-header" style="margin-bottom: 5%; margin-top: 20px;">OUR VALUES</h1>
-      <tr>
-        <td><i class="fa fa-book fa-4x about-icon"></i></td>
-        <td><i class="fa fa-users fa-4x about-icon"></i></td>
-        <td><i class="fa fa-globe fa-4x about-icon"></i></td>
-      </tr>
-      <tr>
-        <td>
-          <p> <b>Bible-Based Teaching</b> </p>
-          <hr>
-          <p style="font-family: cambria"><i>"For the word of God is living and active"</i></p>
-          <p>We strive to live according to God's word, using the teachings of Jesus in our everyday lives.</p>
-        </td>
-        <td>
-          <p> <b>One Another</b> </p>
-          <hr>
-          <p style="font-family: cambria"><i>"Above all, love each other deeply"</i></p>
-          <p>The relationships that we have with one another serve as a springboard to advance our faith.</p>
-        </td>
-        <td>
-          <p> <b>The Great Commission</b> </p>
-          <hr>
-          <p style="font-family: cambria"><i>"Therefore go and make disciples of all nations"</i></p>
-          <p>Our goal is to live out the mission of Jesus as he has called us to go and show others this way of life.</p>
-        </td>
-      </tr>
-    </table>
+    {% if request|is_mobile %}
+      <h1 class="bordered-header" style="margin-bottom: 30px; margin-top: 20px;">OUR VALUES</h1>
+
+      <!-- Tabs courtesy of Daniel Ferenc https://codepen.io/dferenc/pen/YYyjYJ?editors=1100#0 -->
+      <ul id="tabs" class="nav nav-tabs" role="tablist" style="width:100%">
+        <li class="nav-item">
+            <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab"><i class="fa fa-book fa-2x about-icon"></i></a>
+        </li>
+        <li class="nav-item">
+            <a id="tab-B" href="#pane-B" class="nav-link" data-toggle="tab" role="tab"><i class="fa fa-users fa-2x about-icon"></i></a>
+        </li>
+        <li class="nav-item">
+            <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab"><i class="fa fa-globe fa-2x about-icon"></i></a>
+        </li>
+      </ul>
+
+      <div id="content" class="tab-content" role="tablist">
+          <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
+            <div class="card-body">
+              <p> <b>Bible-Based Teaching</b> </p>
+              <hr>
+              <p style="font-family: cambria"><i>"For the word of God is living and active"</i></p>
+              <p>We strive to live according to God's word, applying the teachings of Jesus in our everyday lives.</p>
+            </div>
+          </div>
+          <div id="pane-B" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B">
+            <div class="card-body">
+              <p> <b>One Another</b> </p>
+              <hr>
+              <p style="font-family: cambria"><i>"Above all, love each other deeply"</i></p>
+              <p>The relationships that we have with one another serve as a springboard to advance our faith and our knowledge of Christ.</p>
+            </div>
+          </div>
+          <div id="pane-C" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-C">
+            <div class="card-body">
+              <p> <b>The Great Commission</b> </p>
+              <hr>
+              <p style="font-family: cambria"><i>"Therefore go and make disciples of all nations"</i></p>
+              <p>Our goal is to live out the mission of Jesus as he has called us to go and show others this way of life.</p>
+            </div>
+          </div>
+      </div>
+
+    {% else %}
+      <table>
+        <h1 class="bordered-header" style="margin-bottom: 5%; margin-top: 20px;">OUR VALUES</h1>
+        <tr>
+          <td><i class="fa fa-book fa-4x about-icon"></i></td>
+          <td><i class="fa fa-users fa-4x about-icon"></i></td>
+          <td><i class="fa fa-globe fa-4x about-icon"></i></td>
+        </tr>
+        <tr>
+          <td>
+            <p> <b>Bible-Based Teaching</b> </p>
+            <hr>
+            <p style="font-family: cambria"><i>"For the word of God is living and active"</i></p>
+            <p>We strive to live according to God's word, using the teachings of Jesus in our everyday lives.</p>
+          </td>
+          <td>
+            <p> <b>One Another</b> </p>
+            <hr>
+            <p style="font-family: cambria"><i>"Above all, love each other deeply"</i></p>
+            <p>The relationships that we have with one another serve as a springboard to advance our faith.</p>
+          </td>
+          <td>
+            <p> <b>The Great Commission</b> </p>
+            <hr>
+            <p style="font-family: cambria"><i>"Therefore go and make disciples of all nations"</i></p>
+            <p>Our goal is to live out the mission of Jesus as he has called us to go and show others this way of life.</p>
+          </td>
+        </tr>
+      </table>
+    {% endif %}
+
   </div>
 </div>
 
