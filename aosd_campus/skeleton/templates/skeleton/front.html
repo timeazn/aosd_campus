@@ -49,13 +49,12 @@
     </ol>
     <!-- Carousel items -->
     <div class="carousel-inner">
-      <div class="carousel-item active" alt = "1st slide"><img class = "carimg" src="{% static 'graphics/bowling.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "2nd slide"> <img class = "carimg" src="{% static 'graphics/aogirls.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "3rd slide"> <img class = "carimg" src="{% static 'graphics/candid.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "4th slide"> <img class = "carimg" src="{% static 'graphics/beach.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "5th slide"> <img class = "carimg" src="{% static 'graphics/football-wide.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "6th slide"> <img class = "carimg" src="{% static 'graphics/abyjack-wide.jpg' %}" alt="img"> </div>
-      <div class="carousel-item" alt = "7th slide"> <img class = "carimg" src="{% static 'graphics/broomball.jpg' %}" alt="img"> </div>
+      <div class="carousel-item active" alt = "slide"><img class = "carimg" src="{% static 'graphics/bowling.jpg' %}" alt="img"> </div>
+      <div class="carousel-item" alt = "slide"> <img class = "carimg" src="{% static 'graphics/aogirls.jpg' %}" alt="img"> </div>
+      <div class="carousel-item" alt = "slide"> <img class = "carimg" src="{% static 'graphics/candid.jpg' %}" alt="img"> </div>
+      <div class="carousel-item" alt = "slide"> <img class = "carimg" src="{% static 'graphics/football-wide.jpg' %}" alt="img"> </div>
+      <div class="carousel-item" alt = "slide"> <img class = "carimg" src="{% static 'graphics/abyjack-wide.jpg' %}" alt="img"> </div>
+      <div class="carousel-item" alt = "slide"> <img class = "carimg" src="{% static 'graphics/broomball.jpg' %}" alt="img"> </div>
     </div>
   </div>
 {% endif %}
@@ -128,16 +127,18 @@
   <div class="card upcard">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn" type="button" onclick="reloadFrame()" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <h1>Campus Event</h1>
         </button>
       </h2>
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#upcoming">
       <div class="card-body">
+        <div class="embed-responsive embed-responsive-1by1">
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" class="embed-responsive-item lightwidget-widget"></iframe>
+        </div>
         <!-- LightWidget WIDGET -->
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-        <iframe src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
         <p>Join us this Friday! Click above to find out more.</p>
       </div>
     </div>
@@ -277,6 +278,11 @@
   $('.carousel').carousel({
     interval: 6000
   })
+
+  function reloadFrame(){
+    frame = document.getElementById('eventFrame');
+    frame.src = frame.src;
+  }
 </script>
 
 {% endblock %}
