@@ -48,24 +48,29 @@
 
   <div class="jumbotron page-bg">
     <div class="container">
+      {% if request|is_mobile %}
+        <div class="text-center">
+          <h1 class="text-center">JOIN US <span style="color:gold">FRIDAY</span></h1>
+          <p class="text-center">Looking for an adventure? <br> So are we.</p>
+        </div>
+        <div class="embed-responsive embed-responsive-1by1">
+          <!-- LightWidget WIDGET -->
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="embed-responsive-item lightwidget-widget shadow p-3 mb-5 bg-white rounded"></iframe>
+        </div>
+      {% else %}
       <div class="row">
         <div class="col-lg-6 text-right" style="margin:auto">
-          {% if request|is_mobile %}
-            <h1 class="text-center">JOIN US <span style="color:gold">FRIDAY</span></h1>
-            <p class="text-center">Looking for an adventure? <br> So are we.</p>
-          {% else %}
-            <h1 style="font-size:7em ">JOIN US <span style="color:gold">FRIDAY</span></h1>
-            <p>Looking for an adventure? So are we.</p>
-          {% endif %}
+          <h1 style="font-size:7em ">JOIN US <span style="color:gold">FRIDAY</span></h1>
+          <p>Looking for an adventure? So are we.</p>
         </div>
         <div class="col-lg-6">
-          <div class="embed-responsive embed-responsive-1by1">
-            <!-- LightWidget WIDGET -->
-            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-            <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="embed-responsive-item lightwidget-widget shadow p-3 mb-5 bg-white rounded"></iframe>
-          </div>
+          <!-- LightWidget WIDGET -->
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="lightwidget-widget shadow p-3 mb-5 bg-white rounded"></iframe>
         </div>
       </div>
+      {% endif %}
     </div>
   </div>
 
