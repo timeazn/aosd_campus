@@ -46,12 +46,6 @@
 
   <h1 class="header-text text-center header-margin">EVENTS</h1>
 
-  <div class="embed-responsive embed-responsive-1by1 shadow p-3 mb-5 bg-white rounded">
-    <!-- LightWidget WIDGET -->
-    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-    <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" class="embed-responsive-item lightwidget-widget"></iframe>
-  </div>
-
   <div class="jumbotron page-bg">
     <div class="container">
       {% if request|is_mobile %}
@@ -59,7 +53,11 @@
           <h1 style="font-size:4em ">JOIN US <span style="color:gold">FRIDAY</span></h1>
           <p>Looking for an adventure? So are we.</p>
         </div>
-
+        <div class="embed-responsive embed-responsive-1by1 shadow p-3 mb-5 bg-white rounded">
+          <!-- LightWidget WIDGET -->
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" class="embed-responsive-item lightwidget-widget"></iframe>
+        </div>
         <script type="text/javascript">
           ef = document.getElementById("eventFrame")
           ef.src = ef.src
