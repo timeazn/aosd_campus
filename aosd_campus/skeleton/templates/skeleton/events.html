@@ -4,6 +4,11 @@
 
 {% block content %}
 
+  <script type="text/javascript">
+    ef = document.getElementById("eventFrame")
+    ef.src = ef.src
+  </script>
+
   <!-- CSS -->
   <style>
     body{
@@ -57,10 +62,6 @@
           <!-- LightWidget WIDGET -->
           <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
           <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" class="embed-responsive-item lightwidget-widget"></iframe>
-          <script type="text/javascript">
-            ef = document.getElementById("eventFrame")
-            ef.src = ef.src
-          </script>
         </div>
       {% else %}
       <div class="row">
