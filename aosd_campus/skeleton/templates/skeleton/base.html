@@ -121,6 +121,9 @@
 
     <!-- Script for scrolling to top on logo click -->
     {% if request|is_mobile %}
+      <script type="text/javascript">
+        $('.navbar').removeClass('bg-transparent');
+      </script>
     {% else %}
       <script src="{% static 'js/base.js' %}" type="text/javascript"></script>
     {% endif %}
