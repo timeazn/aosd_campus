@@ -121,6 +121,12 @@
 
     <!-- Script for scrolling to top on logo click -->
     <script src="{% static 'js/base.js' %}" type="text/javascript"></script>
+    <script type="text/javascript">
+      function reloadFrame(){
+        frame = document.getElementById('eventFrame');
+        frame.src = frame.src;
+      }
+    </script>
 
   </body>
 </html>
