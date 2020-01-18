@@ -28,7 +28,7 @@
 
   </head>
 
-  <body>
+  <body onload="reloadFrame()">
     <!-- CSS Styling -->
     <style>
       h1 {
@@ -41,30 +41,16 @@
         {% endif %}
       }
       html, body {
-        /* background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+        background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
         background-size: cover;
         background-repeat: no-repeat;
-        background-attachment: fixed; */
+        background-attachment: fixed;
         height: 100%;
         margin: 0;
       }
-      body:before {
-        content: "";
-        display: block;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -10;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
 
-      body:before {
-        background: url("{% static 'graphics/sdbgblur.jpg' %}") no-repeat center center;
+      .header-margin{
+        padding-top:15%;
       }
 
     </style>
@@ -154,6 +140,7 @@
       function reloadFrame(){
         frame = document.getElementById('eventFrame');
         frame.src = frame.src;
+        alert("Reloaded!")
       }
 
     </script>
