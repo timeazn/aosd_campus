@@ -7,10 +7,12 @@
   <!-- CSS -->
   <style>
     body, html{
-      background-image: url("{% static 'graphics/dodgeball.jpeg' %}");
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
+      {% if request|is_mobile %}
+        background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+        background-position: center center;
+      {% else %}
+        background-image: url("{% static 'graphics/dodgeball.jpg' %}");
+      {% endif %}
     }
 
     .card{

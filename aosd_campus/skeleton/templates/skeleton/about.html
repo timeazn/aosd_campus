@@ -15,10 +15,12 @@
   }
 
   body{
-    background-image: url("{% static 'graphics/camping.jpg' %}");
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
+    {% if request|is_mobile %}
+      background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+      background-position: center center;
+    {% else %}
+      background-image: url("{% static 'graphics/camping.jpg' %}");
+    {% endif %}
   }
 
   td{
