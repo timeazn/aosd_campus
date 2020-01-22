@@ -230,26 +230,7 @@
           <p><b>{{leader.name}}</b><br>{{leader.title}}</p>
           <a href="mailto:{{leader.email}}" class="fa fa-envelope fa-2x" style="padding-bottom: 10px"></a>
           {% if not leader.phone == None %}
-            {% if request|is_mobile %}
-              <a style="margin-left: 15px;" href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
-            {% else %}
-              <button style="margin-left: 15px;" type="button" class="fa fa-phone fa-2x" data-toggle="modal" data-target="#pmod"></button>
-              <div class="modal fade" id="pmod" tabindex="-1" role="dialog" aria-labelledby="pmodLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="pmodLabel">{{leader.name}}</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <p>{{leader.phone}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
+            <a style="margin-left: 15px;" href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
           {% endif %}
         </div>
       </div>
