@@ -228,9 +228,9 @@
             <img class="rounded" src="{{leader.profile.url}}" alt="profile">
           </div>
           <p><b>{{leader.name}}</b><br>{{leader.title}}</p>
-          <a href="mailto:{{leader.email}}" class="fa fa-envelope fa-2x" style="padding-bottom: 10px"></a>
+          <a style="margin:auto" href="mailto:{{leader.email}}" class="fa fa-envelope fa-2x" style="padding-bottom: 10px"></a>
           {% if not leader.phone == None %}
-            <a href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
+            <a style="margin:auto" href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
           {% endif %}
         </div>
       </div>
