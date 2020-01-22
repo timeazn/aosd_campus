@@ -230,7 +230,11 @@
           <p><b>{{leader.name}}</b><br>{{leader.title}}</p>
           <a href="mailto:{{leader.email}}" class="fa fa-envelope fa-2x" style="padding-bottom: 10px"></a>
           {% if not leader.phone == None %}
-            <a style="margin-left: 15px;" href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
+            {% if request|is_mobile %}
+              <a style="margin-left: 15px;" href="tel:{{leader.phone}}" class="fa fa-phone fa-2x"></a>
+            {% else %}
+              <p><br>{{leader.phone}}</p>
+            {% endif %}
           {% endif %}
         </div>
       </div>
