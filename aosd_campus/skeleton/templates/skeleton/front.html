@@ -101,10 +101,10 @@
       <h1 style="font-size:1.9em">"I'm new! I would like to..."</h1>
       <ul class="list-unstyled">
         <li><a role="button" class="new-btn" href="{% url 'skeleton:events' %}"> COME TO AN EVENT </a></li>
-        <li><a role="button" class="new-btn" href="#connect_jumbo"> STUDY THE BIBLE </a></li>
+        <li><a role="button" class="new-btn" href="#connect"> STUDY THE BIBLE </a></li>
         <li><a role="button" class="new-btn" href="{% url 'skeleton:connect'%}"> GET INVOLVED </a></li>
         <li><a role="button" class="new-btn" href="{% url 'skeleton:about' %}"> LEARN MORE ABOUT AO </a></li>
-        <li><a role="button" class="new-btn" href="#connect_jumbo"> ASK A QUESTION </a></li>
+        <li><a role="button" class="new-btn" href="#connect"> ASK A QUESTION </a></li>
       </ul>
     {% else %}
     <h1>"I'm new! I would like to..."</h1>
@@ -226,7 +226,7 @@
 
 <!-- Connect -->
 {% if request|is_mobile%}
-  <div class="jumbotron connect-jumbo">
+  <div class="jumbotron connect-jumbo" id="connect">
     <div class = "connect-cont text-center" style="width:100%">
       <h1>Let's Connect</h1>
       <p class="text-right"style='font-family: cambria;'><i>"The best time to plant a tree was 20 years ago.
