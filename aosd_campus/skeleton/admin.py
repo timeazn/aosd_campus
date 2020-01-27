@@ -5,3 +5,4 @@ from skeleton import models
 admin.site.register(models.ConnectionLink)
 admin.site.register(models.Leader)
 admin.site.register(models.BibleTalk)
+admin.site.register(models.Resource)

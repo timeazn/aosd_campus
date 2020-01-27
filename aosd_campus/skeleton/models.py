@@ -35,3 +35,11 @@ class BibleTalk(models.Model):
 
     def __str__(self):
         return self.school
+
+class Resource(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.URLField(max_length=1000)
+    description = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return self.title

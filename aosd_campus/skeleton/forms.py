@@ -8,7 +8,6 @@ class ConnectionForm(forms.ModelForm):
         fields = ('name','email', 'phone','interest')
         widgets = {
           'interest': forms.Textarea(attrs={'rows':1, 'cols':27}),
-
         }
         labels = {
             'phone': "Phone (Optional)",
@@ -19,9 +18,12 @@ class ConnectionForm(forms.ModelForm):
 class BibleStudyForm(forms.ModelForm):
     class Meta:
         model = ConnectionLink
-        fields = ('name','email','phone')
-        exclude = ('interest',)
+        fields = ('name','email','phone', 'interest')
+        widgets = {
+          'interest': forms.Textarea(attrs={'rows':1, 'cols':27}),
+        }
         labels = {
             'phone': "Phone (Optional)",
             'email': "E-mail",
+            'interest': "How can we help you?",
         }

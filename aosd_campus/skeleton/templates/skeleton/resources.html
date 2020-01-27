@@ -1,0 +1,29 @@
+{% extends 'skeleton/base.html' %}
+{% load staticfiles %}
+{% load user_agents %}
+
+{% block content %}
+<style media="screen">
+  body, html{
+    {% if request|is_mobile %}
+      background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+      background-position: center center;
+    {% else %}
+      background-image: url("{% static 'graphics/frank.jpg' %}");
+    {% endif %}
+  }
+</style>
+
+<h1 class="header-text header-margin text-center">RESOURCES</h1>
+
+<div class="jumbotron page-bg text-center">
+  <div class="container">
+    {% for resource in resource_list %}
+    <h1>{{resource.title}}</h1>
+    <p>{{resource.description}}</p>
+    <a role="button" class="btn btn-primary" target="_blank" href="{{resource.url}}" style="margin-bottom: 30px">OPEN RESOURCE</a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

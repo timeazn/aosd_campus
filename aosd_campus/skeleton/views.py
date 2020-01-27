@@ -90,3 +90,11 @@ class GalleryView(TemplateView):
 
 class EventView(TemplateView):
     template_name = 'skeleton/events.html'
+
+class ResourceView(ListView):
+    model = models.Resource
+    context_object_name = 'resource_list'
+    template_name = 'skeleton/resources.html'
+
+class SignUpView(TemplateView):
+    template_name = 'skeleton/signup.html'
