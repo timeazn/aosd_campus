@@ -34,12 +34,12 @@ class FrontView(TemplateView):
             cf_email = connect_form.cleaned_data['email']
             cf_interest = connect_form.cleaned_data['interest']
             cf_date = timezone.now();
-            subject = "Connection: {} at {}".format(cf_name, cf_date)
+            subject = "LET'S CONNECT SUBMITTED on WEBSITE: {} at {}".format(cf_name, cf_date)
             message = "Connection form submitted from website at {}.\nName: {}\nPhone: {}\nEmail: {}\nInterest: {}\n".format(cf_date, cf_name, cf_phone, cf_email, cf_interest)
-            recipient = "aosdcampus@gmail.com"
+            recipient = ["aosdcampus@gmail.com", "timea1337@gmail.com"]
             sender = "aosd.helper@gmail.com"
             try:
-                send_mail(subject, message, sender, [recipient])
+                send_mail(subject, message, sender, recipient)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
         return HttpResponseRedirect(reverse('skeleton:front'))
@@ -74,12 +74,12 @@ class ConnectView(ListView):
             bf_phone = biblestudy_form.cleaned_data['phone']
             bf_email = biblestudy_form.cleaned_data['email']
             bf_date = timezone.now();
-            subject = "Bible Study Connection: {} at {}".format(bf_name, bf_date)
+            subject = "BIBLE STUDY CONNECTION SUBMITTED on WEBSITE: {} at {}".format(bf_name, bf_date)
             message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:".format(bf_date, bf_name, bf_phone, bf_email)
-            recipient = "aosdcampus@gmail.com"
+            recipient = ["aosdcampus@gmail.com", "timea1337@gmail.com"]
             sender = "aosd.helper@gmail.com"
             try:
-                send_mail(subject, message, sender, [recipient])
+                send_mail(subject, message, sender, recipient)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
 
