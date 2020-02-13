@@ -66,7 +66,6 @@ class ConnectView(ListView):
         biblestudy_form = forms.BibleStudyForm(request.POST)
         if biblestudy_form.is_valid():
             instance = biblestudy_form.save(commit=False)
-            instance.interest = 'Bible Study'
             instance.save()
 
             # Sending Mail
@@ -75,7 +74,7 @@ class ConnectView(ListView):
             bf_email = biblestudy_form.cleaned_data['email']
             bf_date = timezone.now();
             subject = "BIBLE STUDY CONNECTION SUBMITTED on WEBSITE: {} at {}".format(bf_name, bf_date)
-            message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:".format(bf_date, bf_name, bf_phone, bf_email)
+            message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:{}".format(bf_date, bf_name, bf_phone, bf_email)
             recipient = ["aosdcampus@gmail.com", "timea1337@gmail.com"]
             sender = "aosd.helper@gmail.com"
             try:
