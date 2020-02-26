@@ -43,3 +43,12 @@ class Resource(models.Model):
 
     def __str__(self):
         return self.title
+
+class SpecialEvent(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.URLField(max_length=1000)
+    front_graphic = models.ImageField(upload_to='frontpage',blank=True);
+    description = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return self.title

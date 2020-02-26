@@ -87,7 +87,9 @@ class ConnectView(ListView):
 class GalleryView(TemplateView):
     template_name = 'skeleton/gallery.html'
 
-class EventView(TemplateView):
+class EventView(ListView):
+    model = models.SpecialEvent
+    context_object_name = 'special_list'
     template_name = 'skeleton/events.html'
 
 class ResourceView(ListView):
