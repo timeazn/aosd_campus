@@ -27,6 +27,16 @@ Alpha Omega San Diego
     margin-bottom: 0px;
   }
 
+  .upcol{
+    margin-top: 30px;
+  }
+
+  .upimg{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+  }
+
 </style>
 <link rel="stylesheet" href="{% static 'css/front.css'%}">
 
@@ -183,11 +193,25 @@ Alpha Omega San Diego
   </div>
 </div>
 
+<div class="container">
+  {% for event in special_list %}
+  <div class="card" style="margin-top:30px; margin-bottom:30px;">
+    <h5 class="card-header">{{event.title}}</h5>
+    <div class="card-body">
+      <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
+    </div>
+    <div class="card-footer">
+      <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 {% else %}
 <div class="container text-center upheader">
   <h1 class="bordered-header">UP & COMING</h1>
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-4 upcol">
       <div class="card">
         <h5 class="card-header">Campus Event</h5>
         <div class="card-body">
@@ -201,11 +225,11 @@ Alpha Omega San Diego
       </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 upcol">
       <div class="card">
         <h5 class="card-header">Sunday Service</h5>
         <div class="card-body">
-          <img src="{% static 'graphics/sunday.jpg' %}" alt="midweek" style="overflow:hidden; width:100%;height:auto">
+          <img class="upimg" src="{% static 'graphics/sunday.jpg' %}" alt="midweek">
         </div>
         <div class="card-footer">
           <p>Sunday at 10 AM @ Henry High <br> 6702 Wandermere Dr </p>
@@ -213,17 +237,32 @@ Alpha Omega San Diego
       </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 upcol">
       <div class="card">
         <h5 class="card-header">Midweek Service</h5>
         <div class="card-body">
-          <img src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek" style="overflow:hidden; width:100%;height:auto">
+          <img class = "upimg" src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek">
         </div>
         <div class="card-footer">
           <p>Tuesday at 7:30 PM @ SDPAC <br> 4579 Mission Gorge Pl</p>
         </div>
       </div>
     </div>
+
+    {% for event in special_list %}
+    <div class="col-lg-4 upcol">
+      <div class="card">
+        <h5 class="card-header">{{event.title}}</h5>
+        <div class="card-body">
+          <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
+        </div>
+        <div class="card-footer">
+          <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
   </div>
 </div>
 {% endif %}

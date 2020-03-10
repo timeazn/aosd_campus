@@ -13,8 +13,10 @@ class BaseView(TemplateView):
     template_name = 'skeleton/base.html'
 
 # Front Page/Home
-class FrontView(TemplateView):
+class FrontView(ListView):
     template_name = 'skeleton/front.html'
+    model = models.SpecialEvent
+    context_object_name = 'special_list'
 
     def get_context_data(self,**kwargs):
 
