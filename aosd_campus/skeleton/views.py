@@ -86,18 +86,22 @@ class ConnectView(ListView):
 
         return HttpResponseRedirect(reverse('skeleton:connect'))
 
+#Gallery Page
 class GalleryView(TemplateView):
     template_name = 'skeleton/gallery.html'
 
+#Events Page
 class EventView(ListView):
     model = models.SpecialEvent
     context_object_name = 'special_list'
     template_name = 'skeleton/events.html'
 
+#Resources page
 class ResourceView(ListView):
     model = models.Resource
     context_object_name = 'resource_list'
     template_name = 'skeleton/resources.html'
 
+#Rush week signup
 class SignUpView(TemplateView):
     template_name = 'skeleton/signup.html'

@@ -49,6 +49,7 @@ class SpecialEvent(models.Model):
     url = models.URLField(max_length=1000)
     front_graphic = models.ImageField(upload_to='frontpage',blank=True);
     description = models.TextField(max_length=1000)
+    visible = models.BooleanField();
 
     def __str__(self):
         return self.title

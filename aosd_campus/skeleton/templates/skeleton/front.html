@@ -133,6 +133,14 @@ Alpha Omega San Diego
   </div>
 </div>
 
+<!-- Live Stream -->
+<div class="container text-center" style="margin-top: 40px; margin-bottom: 30px">
+  <h1 class = "bordered-header">CATCH US LIVE</h1>
+  <div id = "live" class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KALu6v5t3d0" allowfullscreen></iframe>
+  </div>
+</div>
+
 <!-- Upcoming -->
 {% if request|is_mobile %}
 <div class="text-center">
@@ -154,7 +162,7 @@ Alpha Omega San Diego
           <iframe id="eventFrame" src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" class="embed-responsive-item lightwidget-widget"></iframe>
         </div>
         <!-- LightWidget WIDGET -->
-        <p>Join us this Friday! Click above to find out more.</p>
+        <p>Join us at our next event! Click above to find out more.</p>
       </div>
     </div>
   </div>
@@ -169,8 +177,9 @@ Alpha Omega San Diego
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#upcoming">
       <div class="card-body">
-      <img src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek">
-      <p>Tuesday at 7:30 PM @ SDPAC <br> 4579 Mission Gorge Pl, San Diego, CA 92120 </p>
+        <img src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek">
+        <!-- <p>Tuesday at 7:30 PM @ SDPAC <br> 4579 Mission Gorge Pl, San Diego, CA 92120 </p> -->
+        <p>Our services are postponed per CDC policy. However, you can still tune in to our online services!</p>
       </div>
     </div>
   </div>
@@ -186,7 +195,8 @@ Alpha Omega San Diego
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#upcoming">
       <div class="card-body">
         <img src="{% static 'graphics/sunday.jpg' %}" alt="midweek">
-        <p>Sunday at 10 AM @ Henry High <br> 6702 Wandermere Dr, San Diego, CA 92120 </p>
+        <!-- <p>Sunday at 10 AM @ Henry High <br> 6702 Wandermere Dr, San Diego, CA 92120 </p> -->
+        <p>Our services are postponed per CDC policy. However, you can still tune in to our online services!</p>
         <p></p>
       </div>
     </div>
@@ -195,15 +205,17 @@ Alpha Omega San Diego
 
 <div class="container text-center">
   {% for event in special_list %}
-  <div class="card" style="margin-top:30px; margin-bottom:30px;">
-    <h5 class="card-header">{{event.title}}</h5>
-    <div class="card-body">
-      <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
+    {% if event.visible %}
+    <div class="card" style="margin-top:30px; margin-bottom:30px;">
+      <h5 class="card-header">{{event.title}}</h5>
+      <div class="card-body">
+        <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
+      </div>
+      <div class="card-footer">
+        <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
+      </div>
     </div>
-    <div class="card-footer">
-      <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
-    </div>
-  </div>
+    {% endif %}
   {% endfor %}
 </div>
 
@@ -220,7 +232,7 @@ Alpha Omega San Diego
           <iframe src="https://cdn.lightwidget.com/widgets/be14ccb2dffd5b238d6f9bb9efdb8631.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
         </div>
         <div class="card-footer">
-          <p>Join us this Friday evening! Click above to find out more.</p>
+          <p>Join us at our next event! Click above to find out more.</p>
         </div>
       </div>
     </div>
@@ -232,7 +244,8 @@ Alpha Omega San Diego
           <img class="upimg" src="{% static 'graphics/sunday.jpg' %}" alt="midweek">
         </div>
         <div class="card-footer">
-          <p>Sunday at 10 AM @ Henry High <br> 6702 Wandermere Dr </p>
+          <!-- <p>Sunday at 10 AM @ Henry High <br> 6702 Wandermere Dr </p> -->
+          <p>Our services are postponed per CDC policy. However, you can still tune in to our online services!</p>
         </div>
       </div>
     </div>
@@ -244,23 +257,26 @@ Alpha Omega San Diego
           <img class = "upimg" src="{% static 'graphics/northmidweek-sq.jpg' %}" alt="midweek">
         </div>
         <div class="card-footer">
-          <p>Tuesday at 7:30 PM @ SDPAC <br> 4579 Mission Gorge Pl</p>
+          <!-- <p>Tuesday at 7:30 PM @ SDPAC <br> 4579 Mission Gorge Pl</p> -->
+          <p>Our services are postponed per CDC policy. However, you can still tune in to our online services!</p>
         </div>
       </div>
     </div>
 
     {% for event in special_list %}
-    <div class="col-lg-4 upcol">
-      <div class="card">
-        <h5 class="card-header">{{event.title}}</h5>
-        <div class="card-body">
-          <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
-        </div>
-        <div class="card-footer">
-          <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
+      {% if event.visible %}
+      <div class="col-lg-4 upcol">
+        <div class="card">
+          <h5 class="card-header">{{event.title}}</h5>
+          <div class="card-body">
+            <img class = "upimg" src="{{event.front_graphic.url}}" alt="event">
+          </div>
+          <div class="card-footer">
+            <a role="button" class="btn btn-primary btn-lg" target="_blank" href="{{event.url}}">Register</a>
+          </div>
         </div>
       </div>
-    </div>
+      {% endif %}
     {% endfor %}
 
   </div>
@@ -315,7 +331,6 @@ Alpha Omega San Diego
     </div>
   </div>
 {% endif %}
-
 
 <!-- Carousel Script -->
 <script type = "text/javascript">
