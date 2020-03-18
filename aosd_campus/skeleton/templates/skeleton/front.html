@@ -37,7 +37,12 @@ Alpha Omega San Diego
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 40px 0px;
-    width: 70%;
+    {% if request|is_mobile %}
+      width: 100%;
+    {% else %}
+      width: 70%;
+    {% endif %}
+
   }
 
 
