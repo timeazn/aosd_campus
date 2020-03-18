@@ -27,6 +27,20 @@ Alpha Omega San Diego
     margin-bottom: 0px;
   }
 
+  .live{
+    background-image: url("{% static 'graphics/franklive.jpg' %}");
+    background-size: cover;
+    background-position: center center;
+  }
+  #livebox{
+    border:1px solid white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px 0px;
+    width: 70%;
+  }
+
+
   .upcol{
     margin-top: 30px;
   }
@@ -36,6 +50,8 @@ Alpha Omega San Diego
     width:100%;
     height:100%;
   }
+
+
 
 </style>
 <link rel="stylesheet" href="{% static 'css/front.css'%}">
@@ -134,10 +150,21 @@ Alpha Omega San Diego
 </div>
 
 <!-- Live Stream -->
-<div class="container text-center" style="margin-top: 40px; margin-bottom: 30px">
-  <h1 class = "bordered-header" style="margin-bottom: 30px;">CATCH US LIVE</h1>
-  <div id = "live" class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KALu6v5t3d0" allowfullscreen></iframe>
+<div class="jumbotron live">
+  <div class="container text-center" style="margin-top: 30px; margin-bottom: 30px; color:white">
+    <h1 style="margin-bottom: 30px">CATCH US LIVE</h1>
+    <!-- <div id = "live" class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KALu6v5t3d0" allowfullscreen></iframe>
+    </div> -->
+    <div id="livebox" class = "container">
+      <p>Away from us in body but present in spirit? Now you can be both (virtually)!</p>
+      <p>Connect through our livestreamed services to worship with us wherever you're at.</p>
+      <p> <b><u>TIMES</u></b> </p>
+      <p>Tuesdays at 7:30 PM</p>
+      <p>Sundays at 10 AM</p>
+      <br>
+      <a role="button" class="new-btn" href="https://youtu.be/KALu6v5t3d0" target="_blank"> OPEN LIVESTREAM </a>
+    </div>
   </div>
 </div>
 
