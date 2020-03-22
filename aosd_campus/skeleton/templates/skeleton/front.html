@@ -45,7 +45,6 @@ Alpha Omega San Diego
 
   }
 
-
   .upcol{
     margin-top: 30px;
   }
@@ -60,6 +59,39 @@ Alpha Omega San Diego
 
 </style>
 <link rel="stylesheet" href="{% static 'css/front.css'%}">
+
+<!-- CDC Policy Notice -->
+<div class="jumbotron" style="padding-top:7%; background-color: #435274; margin-bottom:0;">
+  <div class="container text-center" style="color:white">
+    <h1 class="bordered-header">NOTICE</h1>
+    <p>Due to CDC policy we have postponed <i>all</i> of our in-person meetings until further notice.
+    This includes all upcoming retreats and events related to AO.</p>
+    <p>However, we have also moved all of our services online!
+      You can worship with us wherever you're at at the links below. If you have any questions
+    about Christianity or need guidance or help through this time, please don't hesitate
+  to reach out to us. We believe everyone needs hope in trying times, and we're here to spread
+what we have by connecting with you!</p>
+  <p>Our online worship services are <span style="color:gold">every Tuesday at 7:30 PM</span>
+    and <span style="color:gold">every Sunday at 10 AM</span>.</p>
+    {% if request|is_mobile %}
+      <ul class="list-unstyled">
+        <li><a role="button" class="new-btn" href="https://www.youtube.com/watch?v=PccSqvuUcAA&feature=youtu.be" target="_blank"> VISIT ONLINE SERVICE </a></li>
+        <li><a role="button" class="new-btn" href="#connect"> JOIN A BIBLE STUDY </a></li>
+        <li><a role="button" class="new-btn" href="#connect"> ASK A QUESTION </a></li>
+      </ul>
+    {% else %}
+    <div class="row" style="margin-top:30px; padding-left:20%; padding-right:20%;">
+      <a role="button" class="new-btn" href="#connect"> JOIN A BIBLE STUDY </a>
+      <a role="button" class="new-btn" href="https://www.youtube.com/watch?v=PccSqvuUcAA&feature=youtu.be" target="_blank"> VISIT ONLINE SERVICE </a>
+      <a role="button" class="new-btn" href="#connect"> ASK A QUESTION </a>
+    </div>
+    {% endif %}
+    <br>
+    <a class="fa fa-facebook sm-icon" href="https://www.facebook.com/AOSDCampus/" target="_blank"></a>
+    <a class="fa fa-instagram sm-icon" href="https://www.instagram.com/aosd.mission/?hl=en" target="_blank"></a>
+    <a class="fa fa-youtube-play sm-icon" href="https://www.youtube.com/watch?v=PccSqvuUcAA&feature=youtu.be" target="_blank"></a>
+  </div>
+</div>
 
 <!-- Front Page -->
 {% if request|is_mobile %}
@@ -158,9 +190,6 @@ Alpha Omega San Diego
 <div class="jumbotron live">
   <div class="container text-center" style="margin-top: 30px; margin-bottom: 30px; color:white">
     <h1 style="margin-bottom: 30px">CATCH US LIVE</h1>
-    <!-- <div id = "live" class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KALu6v5t3d0" allowfullscreen></iframe>
-    </div> -->
     <div id="livebox" class = "container">
       <p>Away from us in body but present in spirit? Now you can be both (virtually)!</p>
       <p>Connect through our livestreamed services to worship with us wherever you're at.</p>
@@ -168,7 +197,7 @@ Alpha Omega San Diego
       <p>Tuesdays at 7:30 PM</p>
       <p>Sundays at 10 AM</p>
       <br>
-      <a role="button" class="new-btn" href="https://youtu.be/KALu6v5t3d0" target="_blank"> OPEN LIVESTREAM </a>
+      <a role="button" class="new-btn" href="https://www.youtube.com/watch?v=PccSqvuUcAA&feature=youtu.be" target="_blank"> OPEN LIVESTREAM </a>
     </div>
   </div>
 </div>
