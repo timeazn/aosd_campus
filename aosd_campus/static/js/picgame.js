@@ -46,8 +46,6 @@ function setWord(category, level){
       $("#" + category + "_" + level).hide();
     }
     $("#guess").show()
-  }else{
-    cur_word = "empty";
   }
   render()
 }
@@ -57,10 +55,12 @@ $(document).ready(function(){
 
   //on click
   $(".roll").click(function(){
-    var this_id = $(this).prop("id").split("_");
-    cur_category = this_id[0];
-    cur_level = this_id[1];
-    setWord(cur_category, cur_level);
+    if ($("#guess").is(":hidden")){
+      var this_id = $(this).prop("id").split("_");
+      cur_category = this_id[0];
+      cur_level = this_id[1];
+      setWord(cur_category, cur_level);
+    }
   });
   $("#reroll_btn, #already_btn").click(function(){
     if(cur_category != "" && cur_level != ""){
