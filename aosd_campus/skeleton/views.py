@@ -105,3 +105,7 @@ class ResourceView(ListView):
 #Rush week signup
 class SignUpView(TemplateView):
     template_name = 'skeleton/signup.html'
+
+#Rush week signup
+class PicGameView(TemplateView):
+    template_name = 'skeleton/picgame.html'

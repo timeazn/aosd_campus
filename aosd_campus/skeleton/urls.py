@@ -13,5 +13,6 @@ urlpatterns = [
     path('gallery/', views.GalleryView.as_view(), name = 'gallery'),
     path('events/', views.EventView.as_view(), name = 'events'),
     path('resources/', views.ResourceView.as_view(), name = 'resources'),
-    path('signup/', views.SignUpView.as_view(), name = 'signup')
+    path('signup/', views.SignUpView.as_view(), name = 'signup'),
+    path('picgame/', views.PicGameView.as_view(), name = 'picgame')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,68 @@
+{% extends 'skeleton/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Pictionary Game?
+{% endblock %}
+
+{% block content %}
+
+  <script src="{% static 'js/picgame.js' %}" type="text/javascript"></script>
+
+  <style>
+    #word {
+      border: 1px solid black;
+      color: orange
+    }
+  </style>
+
+  <h1 class="header-text header-margin text-center">DRAW ME</h1>
+  <div class="jumbotron page-bg">
+    <div class="container text-center">
+      <div class="row" style="margin-bottom:30px">
+        <div class="col-3" style="text-align: left">
+          <h2>Points: <span id='points_obj'></span><br> Rerolls: <span id='rerolls_obj'></span></h2>
+          <a role="button" id="reroll_btn" class="btn btn-warning btn-lg">REROLL</a>
+        </div>
+        <div class="col">
+            <div id="guess" style="border: 1px solid black; padding-bottom: 25px; padding-top: 30px">
+              <h2>Did they guess right?</h2>
+              <a role="button" id="yes" class="btn btn-success btn-lg">Yessir!</a>
+              <a role="button" id="nope" class="btn btn-danger btn-lg">Nah lol</a>
+            </div>
+        </div>
+        <div class="col">
+          <a role="button" id="already_btn" class="btn btn-info btn-lg">WORD ALREADY USED</a><br><br>
+          <h1 id="word">NONE</h1>
+        </div>
+      </div>
+       <div class="row">
+         <div class="col">
+           <h1>Animals</h1>
+           <a role="button" id="animals_0" class="roll btn btn-primary btn-lg">EASY: 100</a><br><br>
+           <a role="button" id="animals_1" class="roll btn btn-success btn-lg">MED: 200</a><br><br>
+           <a role="button" id="animals_2" class="roll btn btn-danger btn-lg">HARD: 300</a>
+         </div>
+         <div class="col">
+           <h1>House</h1>
+           <a role="button" id="house_0" class="roll btn btn-primary btn-lg">EASY: 100</a><br><br>
+           <a role="button" id="house_1" class="roll btn btn-success btn-lg">MED: 200</a><br><br>
+           <a role="button" id="house_2" class="roll btn btn-danger btn-lg">HARD: 300</a>
+         </div>
+         <div class="col">
+           <h1>Food</h1>
+           <a role="button" id="food_0" class="roll btn btn-primary btn-lg">EASY: 100</a><br><br>
+           <a role="button" id="food_1" class="roll btn btn-success btn-lg">MED: 200</a><br><br>
+           <a role="button" id="food_2" class="roll btn btn-danger btn-lg">HARD: 300</a>
+         </div>
+         <div class="col">
+           <h1>Surprise</h1>
+           <a role="button" id="surprise_0" class="roll btn btn-primary btn-lg">EASY: 100</a><br><br>
+           <a role="button" id="surprise_1" class="roll btn btn-success btn-lg">MED: 200</a><br><br>
+           <a role="button" id="surprise_2" class="roll btn btn-danger btn-lg">HARD: 300</a>
+         </div>
+       </div>
+    </div>
+  </div>
+
+{% endblock %}
