@@ -10,6 +10,7 @@ About AO
 
 <!-- CSS for About -->
 <style>
+
   #about_front{
     background-image: url("{% static 'graphics/phoenixbt.jpg' %}");
     background-size: cover;
@@ -19,13 +20,26 @@ About AO
     color: white;
   }
 
-  body{
+  /* body{
     {% if request|is_mobile %}
       background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
       background-position: center center;
     {% else %}
       background-image: url("{% static 'graphics/camping.jpg' %}");
     {% endif %}
+  } */
+
+  #intro{
+
+    {% if request|is_mobile %}
+      background-image: url("{% static 'graphics/sdbgblur.jpg' %}");
+      background-position: center center;
+    {% else %}
+      background-image: url("{% static 'graphics/camping.jpg' %}");
+      background-size: cover;
+      background-position: center center;
+    {% endif %}
+
   }
 
   td{
@@ -45,6 +59,7 @@ About AO
   }
 
   /* Styling for Values */
+
   .about-icon{
     border: 2px solid white;
     {% if request|is_mobile %}
@@ -113,7 +128,45 @@ About AO
 
 <!-- We Are -->
 
-<h1 class="header-text text-center header-margin">WE ARE AOSD</h1>
+<div id = 'intro'>
+
+  <h1 class="header-text text-center header-margin">WE ARE AOSD</h1>
+
+  <div class="jumbotron" style="background-color: rgba(255, 255, 255, 0.85); border-radius: 0; margin-bottom: 0">
+
+    <div class="container">
+
+      {% if request|is_mobile %}
+      <h1>We are the San Diego Chapter of a nation-wide campus ministry</h1>
+      <hr style="border-color:grey">
+      <p>Alpha Omega is a college group of the San Diego Church of Christ.
+        We're comprised of students from colleges all over the county, and we're
+        dedicated to knowing God deeply and making God known on our campuses.</p>
+      <p>Our focus is to apply the Bible to our lives, build deep friendships, deep convictions and have a lot of fun.
+        We strive to know Christ personally, and help others do the same everywhere we go. </p>
+
+      {% else %}
+        <div class="row">
+          <div class="col" style="border-right: 1px solid black">
+            <h1>We are the San Diego Chapter of a nation-wide campus ministry</h1>
+          </div>
+          <div class="col">
+            <p>Alpha Omega is a college group of the San Diego Church of Christ.
+              We're comprised of students from colleges all over the county, and we're
+              dedicated to knowing God deeply and making God known on our campuses.</p>
+            <p>Our focus is to apply the Bible to our lives, build deep friendships, deep convictions and have a lot of fun.
+              We strive to know Christ personally, and help others do the same everywhere we go. </p>
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- <h1 class="header-text text-center header-margin">WE ARE AOSD</h1>
 
 <div class="jumbotron" style="background-color: rgba(255, 255, 255, 0.85); border-radius: 0; margin-bottom: 0">
   <div class="container">
@@ -140,7 +193,7 @@ About AO
       </div>
     {% endif %}
   </div>
-</div>
+</div> -->
 
 <!-- Values -->
 <div id="about_front" class="jumbotron text-center">

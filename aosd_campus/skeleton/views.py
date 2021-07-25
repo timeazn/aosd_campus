@@ -8,6 +8,9 @@ from skeleton import models, forms
 
 # Create your views here.
 
+# Constants
+phone_maxlen = 15
+
 # View for Navbar
 class BaseView(TemplateView):
     template_name = 'skeleton/base.html'
@@ -36,14 +39,17 @@ class FrontView(ListView):
             cf_email = connect_form.cleaned_data['email']
             cf_interest = connect_form.cleaned_data['interest']
             cf_date = timezone.now();
-            subject = "LET'S CONNECT SUBMITTED on WEBSITE: {} at {}".format(cf_name, cf_date)
-            message = "Connection form submitted from website at {}.\nName: {}\nPhone: {}\nEmail: {}\nInterest: {}\n".format(cf_date, cf_name, cf_phone, cf_email, cf_interest)
-            recipient = ["aosdcampus@gmail.com", "timea1337@gmail.com"]
-            sender = "aosd.helper@gmail.com"
-            try:
-                send_mail(subject, message, sender, recipient)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+
+            # Block scrapers
+            if len(cf_phone) <= phone_maxlen:
+                subject = "LET'S CONNECT SUBMITTED on WEBSITE: {} at {}".format(cf_name, cf_date)
+                message = "Connection form submitted from website at {}.\nName: {}\nPhone: {}\nEmail: {}\nInterest: {}\n".format(cf_date, cf_name, cf_phone, cf_email, cf_interest)
+                recipient = ["aosd.outreach@gmail.com", "timea1337@gmail.com"]
+                sender = "aosd.helper@gmail.com"
+                try:
+                    send_mail(subject, message, sender, recipient)
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
         return HttpResponseRedirect(reverse('skeleton:front'))
 
 # About Page
@@ -65,9 +71,11 @@ class ConnectView(ListView):
         return context
 
     def post(self, request):
+
         biblestudy_form = forms.BibleStudyForm(request.POST)
         if biblestudy_form.is_valid():
-            instance = biblestudy_form.save(commit=False)
+
+            instance = biblestudy_form.save(commit = False)
             instance.save()
 
             # Sending Mail
@@ -75,14 +83,17 @@ class ConnectView(ListView):
             bf_phone = biblestudy_form.cleaned_data['phone']
             bf_email = biblestudy_form.cleaned_data['email']
             bf_date = timezone.now();
-            subject = "BIBLE STUDY CONNECTION SUBMITTED on WEBSITE: {} at {}".format(bf_name, bf_date)
-            message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:{}".format(bf_date, bf_name, bf_phone, bf_email)
-            recipient = ["aosdcampus@gmail.com", "timea1337@gmail.com"]
-            sender = "aosd.helper@gmail.com"
-            try:
-                send_mail(subject, message, sender, recipient)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+
+            # Block scrapers
+            if len(bf_phone) <= phone_maxlen:
+                subject = "BIBLE STUDY CONNECTION SUBMITTED on WEBSITE: {} at {}".format(bf_name, bf_date)
+                message = "Bible Study form submitted from website at {}.\nName: {}\nPhone: {}\nEmail:{}".format(bf_date, bf_name, bf_phone, bf_email)
+                recipient = ["aosd.outreach@gmail.com", "timea1337@gmail.com"]
+                sender = "aosd.helper@gmail.com"
+                try:
+                    send_mail(subject, message, sender, recipient)
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
 
         return HttpResponseRedirect(reverse('skeleton:connect'))
 
